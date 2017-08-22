@@ -1,0 +1,5 @@
+{
+    "require": {
+        "sagittar-org/pieni": "dev-master"
+    }
+}
