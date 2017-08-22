@@ -1,18 +1,9 @@
 <?php
 $config['uri'] = [
-	'language_list' => [
-		'en',
-		'ja',
-	],
 	'actor_hash' => [
 		'g' => 'guest',
 		'm' => 'member',
 		'a' => 'admin',
-	],
-	'class_list' => [
-		'welcome',
-		'auth',
-		'spec',
 	],
 	'table_list' => [
 		'comment',
