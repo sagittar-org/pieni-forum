@@ -1,4 +1,11 @@
 {
+    "description": "pieni-forum",
+    "name": "sagittar-org/pieni-forum",
+    "homepage": "http://pieni.sagittar.org/",
+    "license": "MIT",
+    "support": {
+        "source": "https://github.com/sagittar-org/pieni-forum"
+    },
     "require": {
         "sagittar-org/pieni": "dev-master"
     }
