@@ -1,31 +1,29 @@
 <?php
-$config['uri'] = [
-	'actor_hash' => [
-		'g' => 'guest',
-		'm' => 'member',
-		'a' => 'admin',
-	],
-	'table_list' => [
-		'comment',
-		'post',
-		'news',
-		'file',
-		'member',
-		'admin',
-		'directive',
-	],
-	'action_hash' => [
-		'proxy'  => 'row',
-		'index'  => 'index',
-		'view'   => 'view',
-		'add'    => 'add',
-		'edit'   => 'edit',
-		'delete' => 'delete',
-	],
-	'alias_list' => [
-		'member_post',
-		'post_comment',
-	],
+$config['uri']['actor_hash'] = [
+	'g' => 'guest',
+	'm' => 'member',
+	'a' => 'admin',
+];
+$config['uri']['table_list'] = [
+	'comment',
+	'post',
+	'news',
+	'file',
+	'member',
+	'admin',
+	'directive',
+];
+$config['uri']['action_hash'] = [
+	'proxy'  => 'row',
+	'index'  => 'index',
+	'view'   => 'view',
+	'add'    => 'add',
+	'edit'   => 'edit',
+	'delete' => 'delete',
+];
+$config['uri']['alias_list'] = [
+	'member_post',
+	'post_comment',
 ];
 $config['auth'] = [
 	'm' => [
