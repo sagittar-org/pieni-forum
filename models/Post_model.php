@@ -20,13 +20,11 @@ class Post_model extends Crud_model {
 		$this->append('select_hash', 'post_name', NULL);
 		$this->append('select_hash', 'post_created', NULL);
 		$this->append('select_hash', 'post_text', NULL);
-		$this->append('select_hash', 'post_image', NULL);
 		$this->append('select_hash', 'count_comment', NULL);
 		$this->append('hidden_list', 'post_id');
 		$this->append('hidden_list', 'post_member_id');
 		$this->append('set_list', 'post_name');
 		$this->append('set_list', 'post_text');
-		$this->append('set_list', 'post_image');
 		$this->append('fixed_hash', 'post_created', 'CURRENT_TIMESTAMP');
 		$this->append('join_hash', 'post_member', ['table' => '`member`', 'cond' => '`member_id` = `post_member_id`']);
 		$this->append('join_hash', 'post_comment', ['table' => '(SELECT `post_parent_id`, COUNT(*) AS `count_comment` FROM `post` GROUP BY `post_parent_id`)', 'cond' => '`post_comment`.`post_parent_id` = `post_id`']);
@@ -42,7 +40,8 @@ class Post_model extends Crud_model {
 		// アクター:会員
 		if ($this->actor === 'm'):
 			$this->append('fixed_hash', 'post_member_id', $this->auth['id']);
-//			$this->append('where_list', "`post_member_id` = {$this->auth['id']}");
+			$this->remove('action_hash', 'edit');
+			$this->remove('action_hash', 'delete');
 		endif;
 
 		// アクター:ゲスト
@@ -50,16 +49,6 @@ class Post_model extends Crud_model {
 			$this->remove('action_hash', 'add');
 			$this->remove('action_hash', 'edit');
 			$this->remove('action_hash', 'delete');
-		endif;
-
-		// アクション:index
-		if ($this->action === 'index'):
-//			$this->remove('select_hash', 'post_text');
-		endif;
-
-		// アクション:delete
-		if ($this->action === 'delete'):
-			$this->remove('select_hash', 'post_image');
 		endif;
 
 		// エイリアス:投稿 (post)
@@ -79,8 +68,6 @@ class Post_model extends Crud_model {
 			$this->append('select_hash', 'post_name', 'CONCAT("Re: ", `parent_name`)');
 			$this->append('join_hash', 'post_parent', ['table' => '(SELECT `post_id`, `post_name` AS `parent_name` FROM `post`)', 'cond' => '`post_parent`.`post_id` = `post`.`post_parent_id`']);
 			$this->append('where_list', "`post`.`post_parent_id` = {$this->parent_id}");
-			$this->remove('select_hash', 'post_member_id');
-			$this->remove('select_hash', 'member_name');
 		endif;
 	}
 }
