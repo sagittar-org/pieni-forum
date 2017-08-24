@@ -1,0 +1,21 @@
+digraph graph_name {
+	graph [
+	];
+
+	node [
+		fontname = "Ubuntu",
+	];
+
+	edge [
+		arrowhead = "crow",
+	];
+
+	// node define
+	member [label="会員"];
+	post [label="投稿"];
+	comment [label="コメント"];
+
+	// edge define
+	member -> post;
+	post -> comment;
+}
