@@ -12,6 +12,7 @@ class Post_model extends Crud_model {
 		$this->append('action_hash', 'index', 'index');
 		$this->append('action_hash', 'view', 'view');
 		$this->append('action_hash', 'add', 'add');
+		$this->append('action_hash', 'reply', 'edit');
 		$this->append('action_hash', 'edit', 'edit');
 		$this->append('action_hash', 'delete', 'delete');
 		$this->append('select_hash', 'post_id', '`post`.`post_id`');
@@ -30,6 +31,7 @@ class Post_model extends Crud_model {
 		if ($this->alias === 'post_post'):
 			$this->append('fixed_hash', 'post_parent_id', $this->parent_id);
 			$this->append('where_list', "`post_parent_id` = '{$this->parent_id}'");
+			$this->append('set_list', 'post_parent_id');
 		endif;
 	}
 }
