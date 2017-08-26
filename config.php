@@ -33,7 +33,7 @@ $config['auth'] = [
 	],
 ];
 $config['db'] = [
-	'debug'    => true,
+	'debug'    => FALSE,
 	'host'     => 'localhost',
 	'username' => 'root',
 	'passwd'   => '',
