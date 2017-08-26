@@ -27,9 +27,10 @@ class Post_model extends Crud_model {
 		$this->append('set_list', 'post_name');
 		$this->append('set_list', 'post_parent_id');
 		$this->append('set_list', 'post_text');
+		$this->append('where_hash', 'simple', 'CONCAT(`post_name`, `post_text`, `member_name`)');
 		$this->append('join_hash', 'member', ['table' => 'member', 'cond' => '`member_id` = `post_member_id`']);
 		$this->append('join_hash', 'count', ['table' => '(SELECT `post_parent_id` AS `count_id`, COUNT(*) AS `count_post` FROM `post` GROUP BY `post_parent_id`)', 'cond' => '`count_id` = `post_id`']);
-		$this->append('join_hash', 'parent', ['table' => '(SELECT `post_parent_id` AS `parent_id` FROM `post` WHERE `post_parent_id` IS NOT NULL)', 'cond' => '`parent_id` = `post_id`']);
+		$this->append('join_hash', 'parent', ['table' => '(SELECT `post_id` AS `parent_id` FROM `post` WHERE `post_parent_id` IS NOT NULL)', 'cond' => '`parent_id` = `post_id`']);
 		$this->append('order_by_hash', 'post_id_desc', '`post_id` DESC');
 		$this->append('limit_list', 10);
 
