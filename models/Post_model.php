@@ -56,18 +56,13 @@ class Post_model extends Crud_model {
 			$this->append('where_list', '`post`.`post_parent_id` IS NULL');
 		endif;
 
-		// エイリアス:投稿 (member_post)
-		if ($this->alias === 'member_post'):
-			$this->append('where_list', "`post_member_id` = {$this->parent_id}");
-			$this->remove('select_hash', 'post_member_id');
-			$this->remove('select_hash', 'member_name');
-		endif;
-
 		// エイリアス:投稿 (post_comment)
 		if ($this->alias === 'post_comment'):
 			$this->append('select_hash', 'post_name', 'CONCAT("Re: ", `parent_name`)');
+			$this->append('fixed_hash', 'post_name', '');
 			$this->append('join_hash', 'post_parent', ['table' => '(SELECT `post_id`, `post_name` AS `parent_name` FROM `post`)', 'cond' => '`post_parent`.`post_id` = `post`.`post_parent_id`']);
 			$this->append('where_list', "`post`.`post_parent_id` = {$this->parent_id}");
+			$this->remove('where_hash', 'simple');
 		endif;
 	}
 }
