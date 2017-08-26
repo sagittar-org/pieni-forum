@@ -15,6 +15,7 @@
 <?php endif; ?>
         <spen class="text-muted">(<?php h($row['count_post']); ?>)</span>
       </h4>
+      <p><?php h($row['member_name']); ?></p>
 <?php if (in_array('edit', array_keys($vars['model']->action_hash)) OR in_array('delete', array_keys($vars['model']->action_hash))): ?>
       <div class="text-right" style="margin-top:-35px">
 <?php foreach ($vars['model']->action_hash as $key => $row_action): ?>
