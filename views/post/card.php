@@ -6,16 +6,16 @@
     <div class="well">
       <h4 style="margin:0;">
 <?php if (in_array('view', array_keys($vars['model']->action_hash))): ?>
-<?php if ($row['parent_id'] !== NULL): ?>
-        <a href="<?php href("{$table}/view/{$row['parent_id']}"); ?>"><span class="glyphicon glyphicon-menu-up"></span></a>
-<?php endif; ?>
         <a href="<?php href("{$table}/view/{$id}"); ?>"><?php h($row[$vars['model']->display]); ?></a>
 <?php else: ?>
         <?php h($row[$vars['model']->display]); ?>
 <?php endif; ?>
         <spen class="text-muted">(<?php h($row['count_post']); ?>)</span>
       </h4>
-      <p><?php h($row['member_name']); ?></p>
+      <p>
+        <?php h($row['member_name']); ?><br>
+        <span class="text-muted"><?php h(date('Y-m-d H:i', strtotime($row['post_created']))); ?></span><br>
+      </p>
 <?php if (in_array('edit', array_keys($vars['model']->action_hash)) OR in_array('delete', array_keys($vars['model']->action_hash))): ?>
       <div class="text-right" style="margin-top:-35px">
 <?php foreach ($vars['model']->action_hash as $key => $row_action): ?>
