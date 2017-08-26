@@ -15,6 +15,7 @@ $config['uri']['action_hash'] = [
 	'index'  => 'index',
 	'view'   => 'view',
 	'add'    => 'add',
+	'reply'  => 'edit',
 	'edit'   => 'edit',
 	'delete' => 'delete',
 ];
