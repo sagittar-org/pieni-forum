@@ -4,7 +4,6 @@
 <?php $id = $row[$vars['model']->primary_key]; ?>
     <div class="container">
       <h1>
-<?php r($row); ?>
 <?php if ($row['parent_id'] !== NULL): ?>
         <a href="<?php href("{$table}/view/{$row['parent_id']}"); ?>"><span class="glyphicon glyphicon-menu-up"></span></a>
 <?php endif; ?>
