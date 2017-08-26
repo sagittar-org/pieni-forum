@@ -14,8 +14,8 @@ $config['uri']['action_hash'] = [
 	'proxy'  => 'row',
 	'index'  => 'index',
 	'view'   => 'view',
-	'add'    => 'add',
 	'reply'  => 'edit',
+	'add'    => 'add',
 	'edit'   => 'edit',
 	'delete' => 'delete',
 ];

@@ -4,13 +4,17 @@
 <?php $row = $vars['row']; ?>
 <?php $id = $row[$vars['model']->primary_key]; ?>
     <div class="well">
-      <h3 style="margin:0;">
+      <h4 style="margin:0;">
 <?php if (in_array('view', array_keys($vars['model']->action_hash))): ?>
+<?php if ($row['parent_id'] !== NULL): ?>
+        <a href="<?php href("{$table}/view/{$row['parent_id']}"); ?>"><span class="glyphicon glyphicon-menu-up"></span></a>
+<?php endif; ?>
         <a href="<?php href("{$table}/view/{$id}"); ?>"><?php h($row[$vars['model']->display]); ?></a>
 <?php else: ?>
         <?php h($row[$vars['model']->display]); ?>
 <?php endif; ?>
-      </h3>
+        <spen class="text-muted">(<?php h($row['count_post']); ?>)</span>
+      </h4>
 <?php if (in_array('edit', array_keys($vars['model']->action_hash)) OR in_array('delete', array_keys($vars['model']->action_hash))): ?>
       <div class="text-right" style="margin-top:-35px">
 <?php foreach ($vars['model']->action_hash as $key => $row_action): ?>
@@ -26,15 +30,7 @@
 <?php endforeach; ?>
       </div>
 <?php endif; ?>
-      <table class="table" style="margin:0;">
-<?php foreach ($vars['model']->select_hash as $key => $select): ?>
-<?php if (in_array($key, $vars['model']->hidden_list)) continue; ?>
-<?php if ($key === $vars['model']->display) continue; ?>
-        <tr>
-          <td><?php load_view('col', ['row' => $row, 'key' => $key], $vars['model']->table); ?></td>
-        </tr> 
-<?php endforeach; ?>
-      </table>
+      <p><?php echo nl2br(h($row['post_text'], TRUE)); ?></p>
 <?php
 if ( ! function_exists('post_recursive'))
 {
