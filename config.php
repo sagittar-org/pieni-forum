@@ -5,10 +5,7 @@ $config['uri']['actor_hash'] = [
 	'a' => 'admin',
 ];
 $config['uri']['table_list'] = [
-	'comment',
 	'post',
-	'news',
-	'file',
 	'member',
 	'admin',
 	'directive',
@@ -22,8 +19,7 @@ $config['uri']['action_hash'] = [
 	'delete' => 'delete',
 ];
 $config['uri']['alias_list'] = [
-	'member_post',
-	'post_comment',
+	'post_post',
 ];
 $config['auth'] = [
 	'm' => [
