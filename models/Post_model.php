@@ -20,5 +20,16 @@ class Post_model extends Crud_model {
 		$this->append('set_list', 'post_name');
 		$this->append('order_by_hash', 'post_id_desc', '`post_id` DESC');
 		$this->append('limit_list', 10);
+
+		// エイリアス:投稿 (post)
+		if ($this->alias === 'post'):
+			$this->append('where_list', "`post_parent_id` IS NULL");
+		endif;
+
+		// エイリアス:post_post (post_post)
+		if ($this->alias === 'post_post'):
+			$this->append('fixed_hash', 'post_parent_id', $this->parent_id);
+			$this->append('where_list', "`post_parent_id` = '{$this->parent_id}'");
+		endif;
 	}
 }
