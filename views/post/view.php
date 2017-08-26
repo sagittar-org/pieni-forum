@@ -4,6 +4,7 @@
 <?php $id = $row[$vars['model']->primary_key]; ?>
     <div class="container">
       <h1>
+<?php r($row); ?>
 <?php if ($row['parent_id'] !== NULL): ?>
         <a href="<?php href("{$table}/view/{$row['parent_id']}"); ?>"><span class="glyphicon glyphicon-menu-up"></span></a>
 <?php endif; ?>
@@ -34,8 +35,7 @@
       <hr>
       <p class="lead"><?php echo nl2br(h($row['post_text'], TRUE)); ?></p>
     </div>
-<?php load_view('edit', $vars, $table); ?>
-<?php load_view('delete', $vars, $table); ?>
+<?php load_view('row_action', $vars, $table); ?>
 <?php foreach ($vars['model']->has_hash as $key => $has): ?>
 <?php if ( ! in_array('index', array_keys($vars['model']->action_hash))) continue; ?>
 <?php load_view('index', $has, $has['model']->table); ?>
