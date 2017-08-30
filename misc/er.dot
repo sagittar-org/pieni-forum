@@ -11,11 +11,12 @@ digraph graph_name {
 	];
 
 	// node define
-	member [label="会員"];
 	post [label="投稿"];
-	comment [label="コメント"];
+	member [label="会員"];
+	admin [label="管理者"];
+	directive [label="ディレクティブ"];
 
 	// edge define
 	member -> post;
-	post -> comment;
+	post -> post;
 }
