@@ -14,8 +14,8 @@ $config['uri']['table_list'] = [
 	'directive',
 ];
 $config['uri']['action_hash'] = [
-	'proxy'    => 'row',
 	'index'    => 'index',
+	'proxy'    => 'row',
 	'view'     => 'view',
 	'reply'    => 'edit',
 	'add'      => 'add',
