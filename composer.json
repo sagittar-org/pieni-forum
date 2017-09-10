@@ -7,6 +7,6 @@
         "source": "https://github.com/sagittar-org/pieni-forum"
     },
     "require": {
-        "sagittar-org/pieni": "dev-master"
+        "sagittar-org/pieni": "1.0.0"
     }
 }
